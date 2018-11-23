@@ -1,0 +1,27 @@
+extends layout
+
+block content
+	
+	each val in data
+		.row
+			.col.s12.m6
+				.card-panel.teal.lighten-2.z-depth-5
+					.card-content.white-text
+						.card-title
+							
+							h4 #{val.superhero}
+							h6 first appeared in #{val.first_appearance}
+						p Character Id: #{val.id}
+						p Real Name : #{val.alter_ego}
+						p Publisher : #{val.publisher}
+						p Characters : #{val.characters}
+					.card-action.white-text
+						a(href='deleteRow?id='+val.id) Delete
+						a(href='getSingle?id='+val.id) View
+						a(href='#'+val.id) Update
+						
+
+
+						
+						
+
