@@ -15,6 +15,14 @@ router.get('/saveData', function(req, res, next) {
     .catch(console.log('ERR :: is resolving the promise'))
 });
 
+router.get('/updateData', function(req, res, next) {
+	Heroes.updateData(req.query)
+	 .then(function(){
+	 	res.redirect('/getAllHeroes')
+	 })
+});
+
+
 router.get('/deleteRow', function(req, res, next) {
 	Heroes.deleteRow(req.query)
 	 .then(function(){
@@ -27,6 +35,14 @@ router.get('/getAllHeroes', function(req, res, next) {
 	Heroes.getAll()
 	 .then(function(reVal){
 	 	res.render('heros', {data : reVal})
+	 })
+    .catch(console.log('ERR :: is resolving the promise'))
+});
+
+router.get('/updatePage', function(req, res, next) {
+	Heroes.getSingle(req.query)
+	 .then(function(reVal){
+	 	res.render('updatePage', {data : reVal})
 	 })
     .catch(console.log('ERR :: is resolving the promise'))
 });

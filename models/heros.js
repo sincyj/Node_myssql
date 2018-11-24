@@ -128,4 +128,36 @@ Heros.getSingle = function(heroData){
 		
 }
 
+Heros.updateData = function(heroData){
+	return new Promise(function (resolve, reject){
+		// create the connection to database
+		const connection = mysql.createConnection({
+		host: 'localhost',		
+  		user: 'root',
+  		database: 'nodetrainingdb',
+  		password: 'ccs#1234'
+		});
+
+		//
+		
+		let query = `update comic set superhero= '${heroData.superhero}', publisher= '${heroData.publisher}', alter_ego = '${heroData.alter_ego}', first_appearance= '${heroData.first_appearance}' ,characters= '${heroData.characters}' where id = '${heroData.id}'`;
+		console.log(query);
+		connection.query(query,function(err, result, fields){
+			if (err) {
+				console.log(err);
+				console.log('ERR :: fetching data from database..');
+				reject();
+			}
+			else {
+				//console.log(result);
+				//console.log(fields);
+				resolve(result);
+			}
+
+		});
+
+	});
+		
+}
+
 module.exports = Heros;

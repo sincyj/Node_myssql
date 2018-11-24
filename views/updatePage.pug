@@ -1,0 +1,29 @@
+extends layout
+
+block content
+
+  h1= title
+
+  p Welcome to #{title}
+  form(action= 'updateData' method= 'get')
+    each val in data
+      .row
+        .input-field.col.s6
+          input#id.validate( type= 'hidden', name= 'id' ,value = val.id)
+      .row
+        .input-field.col.s6
+          input#superhero.validate( type= 'text', name= 'superhero' ,value = val.superhero)
+      .row
+       .input-field.col.s6
+          input#publisher.validate( type= 'text', name= 'publisher' ,value = val.publisher)
+      .row
+        .input-field.col.s6
+          input#alter_ego.validate( type= 'text', name= 'alter_ego' value = val.alter_ego)
+      .row
+        .input-field.col.s6
+          input#first_appearance.validate( type= 'text', name= 'first_appearance' value = val.first_appearance)
+      .row
+        .input-field.col.s6
+          input#characters.validate( type= 'text', name= 'characters' value = val.characters)
+      .row
+        button.btn(type= 'submit') Go
