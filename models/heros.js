@@ -1,5 +1,4 @@
 var express = require('express');
-var JSONData = require('./heros.json');
 var fs = require("fs");
 // get the client
 const mysql = require('mysql2');
